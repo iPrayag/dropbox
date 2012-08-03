@@ -19,13 +19,13 @@ import com.dropbox.client2.session.WebAuthSession;
 public class Client {
 
 	public Client(String fileName) {
-		String key = "iwmvas6dycmcqmb";
-		String secret = "9dpwmx7tyy1jki2";
-		AppKeyPair pair = new AppKeyPair(key,secret);
-		AccessTokenPair sourceAccess = new AccessTokenPair("2uw3urp32fvaohn","tro5gf2yjrm9op3");
+		String KEY = "iwmvas6dycmcqmb";
+		String SECRET = "9dpwmx7tyy1jki2";
+		AppKeyPair appKeyPair = new AppKeyPair(KEY,SECRET);
+		AccessTokenPair sourceAccessTokenPair = new AccessTokenPair("2uw3urp32fvaohn","tro5gf2yjrm9op3");
 		try {
-			WebAuthSession session = new WebAuthSession(pair,Session.AccessType.DROPBOX,sourceAccess);
-			DropboxAPI<?> sourceClient = new DropboxAPI<WebAuthSession>(session);
+			WebAuthSession session = new WebAuthSession(appKeyPair,Session.AccessType.DROPBOX,sourceAccessTokenPair);
+			DropboxAPI<?> mDBApi = new DropboxAPI<WebAuthSession>(session);
 			
 			File file = new File(fileName);
 			FileInputStream fis = new FileInputStream(file);
@@ -38,7 +38,7 @@ public class Client {
 			}
 			ByteArrayInputStream inputStream2 = new ByteArrayInputStream(bos.toByteArray());
 
-			Entry newEntry = sourceClient.putFile("/home/prayag/"+file.getName(), inputStream2,bos.size(), null, null);
+			Entry newEntry = mDBApi.putFile("/home/prayag/"+file.getName(), inputStream2,bos.size(), null, null);
 			
 			System.out.println("Done. \nSize: "+newEntry.size+"\nRevision of file: " + newEntry.rev + " " + newEntry.mimeType);
 		} catch (Exception e) {
