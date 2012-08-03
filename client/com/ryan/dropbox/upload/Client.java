@@ -24,6 +24,7 @@ public class Client {
 		AppKeyPair appKeyPair = new AppKeyPair(KEY,SECRET);
 		AccessTokenPair sourceAccessTokenPair = new AccessTokenPair("2uw3urp32fvaohn","tro5gf2yjrm9op3");
 		try {
+			//authentcate : https://www.dropbox.com/developers/start/authentication#androidddddddd
 			WebAuthSession session = new WebAuthSession(appKeyPair,Session.AccessType.DROPBOX,sourceAccessTokenPair);
 			DropboxAPI<?> mDBApi = new DropboxAPI<WebAuthSession>(session);
 			
