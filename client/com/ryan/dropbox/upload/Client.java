@@ -38,8 +38,9 @@ public class Client {
 			}
 			ByteArrayInputStream inputStream2 = new ByteArrayInputStream(bos.toByteArray());
 
-			Entry newEntry = mDBApi.putFile("/home/prayag/"+file.getName(), inputStream2,bos.size(), null, null);
-			
+			Entry newEntry   = mDBApi.putFile("/home/prayag/"+file.getName(), inputStream2,bos.size(), null, null);
+                        //Entry newEntry = mDBApi.putFileOverwrite("yamaha.jpg", fis, file.length(), null);
+                        
 			System.out.println("Done. \nSize: "+newEntry.size+"\nRevision of file: " + newEntry.rev + " " + newEntry.mimeType);
 		} catch (Exception e) {
 			e.printStackTrace();
