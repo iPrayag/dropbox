@@ -38,7 +38,7 @@ public class Client {
 			}
 			ByteArrayInputStream inputStream2 = new ByteArrayInputStream(bos.toByteArray());
 
-			Entry newEntry = sourceClient.putFile("/Ryan/"+file.getName(), inputStream2,bos.size(), null, null);
+			Entry newEntry = sourceClient.putFile("/home/prayag/"+file.getName(), inputStream2,bos.size(), null, null);
 			
 			System.out.println("Done. \nSize: "+newEntry.size+"\nRevision of file: " + newEntry.rev + " " + newEntry.mimeType);
 		} catch (Exception e) {
